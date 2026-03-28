@@ -5,6 +5,7 @@ import logging
 from datetime import timedelta
 
 import aiohttp
+import asyncio
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
@@ -36,10 +37,16 @@ class MetHuForecastCoordinator(DataUpdateCoordinator[MetHuForecastData]):
 
     async def _async_update_data(self) -> MetHuForecastData:
         """Fetch data from met.hu."""
+        # Note: asyncio.TimeoutError and aiohttp.ClientError are already
+        # handled by the data update coordinator.
         session = async_get_clientsession(self.hass)
         try:
             data = await fetch_forecast(session, self.settlement)
         except aiohttp.ClientError as exc:
+            raise
+        except asyncio.TimeoutError as exc:
+            raise
+        except Exception as exc:
             raise UpdateFailed(
                 f"Error communicating with met.hu for '{self.settlement.name}': {exc}"
             ) from exc
