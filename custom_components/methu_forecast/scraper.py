@@ -111,12 +111,10 @@ ICON_CONDITION = {
     "w010e": "rainy",
     "w011":  "rainy",           # eső
     "w011e": "rainy",
-    "w012":  "pouring",         # zápor
-    "w012e": "pouring",
+    "w012":  "cloudy",         # erősen fátyolfelhős
+    "w012e": "cloudy",
     "w013":  "lightning-rainy", # zivatar
     "w013e": "lightning-rainy",
-    "w104":  "lightning-rainy", # zivatar
-    "w104e": "lightning-rainy",
     "w014":  "snowy-rainy",     # havas eső
     "w014e": "snowy-rainy",
     "w015":  "snowy",           # hószállingózás
@@ -127,6 +125,14 @@ ICON_CONDITION = {
     "w017e": "snowy",
     "w018":  "hail",            # jégeső
     "w018e": "hail",
+    "w102":  "rainy",           # eső
+    "w102e": "rainy",
+    "w103":  "pouring",         # zápor
+    "w103e": "pouring",
+    "w104":  "lightning-rainy", # zivatar
+    "w104e": "lightning-rainy",
+    "w110":  "snowy-rainy",     # havas eső
+    "w110e": "snowy-rainy",
 }
 
 
